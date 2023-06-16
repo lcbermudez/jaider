@@ -10,6 +10,7 @@ export class Venta extends Model {
     public descuentosVenta!: number;
     public totalVenta!: number;
     public clienteId!:number;
+    public cocheId!:number;
 }
 
 export interface VentaI{
@@ -19,6 +20,7 @@ export interface VentaI{
     descuentosVenta: number;
     totalVenta: number;
     clienteId:number;
+    cocheId:number;
 }
 
 Venta.init(
@@ -73,6 +75,6 @@ Venta.belongsTo(Cliente, { foreignKey: "clienteId", as: 'cliente'}); // Agrega u
 Cliente.hasMany(Venta, { foreignKey: "clienteId" }); // Agrega una columna clienteId en la tabla ventas
 // Asociación la tabla cliente con la tabla venta
 
-Venta.belongsTo(Coche, { foreignKey: "cocheId", as: 'coche'});
+Venta.belongsTo(Coche, { foreignKey: "cocheId"});
 Coche.hasMany(Venta, { foreignKey: "cocheId" });
 

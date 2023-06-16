@@ -5,6 +5,7 @@ import { where } from 'sequelize/types';
 
 import { Venta, VentaI } from '../models/venta';
 import { Cliente } from '../models/cliente';
+import { Coche } from '../models/coche';
 
 export class VentaController{
         //metdo mostrar ventas
@@ -16,6 +17,10 @@ export class VentaController{
                         model: Cliente,
                         as:'cliente',
                         attributes: ['nombre']
+                    },
+                    {
+                        model: Coche,
+                        attributes: ['modelo']
                     }
                 ]
             }) // select * from clientes;
@@ -55,7 +60,8 @@ export class VentaController{
             impuestosVenta,
             descuentosVenta,
             totalVenta,
-           clienteId
+           clienteId,
+           cocheId
         } = req.body;
 
         try {
@@ -65,7 +71,8 @@ export class VentaController{
                 impuestosVenta,
                 descuentosVenta,
                 totalVenta,
-                clienteId
+                clienteId,
+                cocheId
                 
             } 
 
@@ -86,7 +93,8 @@ export class VentaController{
             impuestosVenta,
             descuentosVenta,
             totalVenta,
-           clienteId
+           clienteId,
+           cocheId
         } = req.body;
 
         try {
@@ -96,7 +104,8 @@ export class VentaController{
                 impuestosVenta,
                 descuentosVenta,
                 totalVenta,
-                clienteId
+                clienteId,
+                cocheId
             } 
 
             const ventaExist: VentaI | null = await Venta.findByPk(pk);
